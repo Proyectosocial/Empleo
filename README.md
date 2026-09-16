@@ -22,3 +22,6 @@ El botón Postularse aquí abre primero el detalle completo recibido de la fuent
 
 ## Categorías
 El desplegable de búsqueda incluye 25 categorías, desde Personal de Maestranza hasta Supervisor de Soporte, con términos de búsqueda equivalentes en español/inglés para la fuente de empleos.
+
+## Vigencia predeterminada
+La búsqueda muestra por defecto únicamente ofertas publicadas durante los últimos 15 días, ordenadas desde la más reciente.
