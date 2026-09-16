@@ -39,12 +39,16 @@ async function load(){
    const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),12000);
    const r=await fetch('https://remotive.com/api/remote-jobs',{signal:controller.signal});
    clearTimeout(timer); if(!r.ok) throw new Error('HTTP '+r.status);
-   const d=await r.json(); let list=(d.jobs||[]).filter(j=>j.company_name&&j.url&&relevant(j,cat.value));
+   const d=await r.json(); const cutoff=Date.now()-30*24*60*60*1000;
+   let list=(d.jobs||[]).filter(j=>{
+     const published=Date.parse(j.publication_date||'');
+     return j.company_name&&j.url&&relevant(j,cat.value)&&Number.isFinite(published)&&published>=cutoff&&published<=Date.now();
+   }).sort((a,b)=>Date.parse(b.publication_date)-Date.parse(a.publication_date));
    const loc=where.value.trim().toLowerCase();
    if(loc) list=list.filter(j=>(j.candidate_required_location||'').toLowerCase().includes(loc));
    list=list.slice(0,20);
    jobs.innerHTML=list.length?list.map(j=>`<article class="job"><h2>${esc(j.title)}</h2><div class="company">🏢 ${esc(j.company_name)}</div><div class="meta">📍 ${esc(j.candidate_required_location||'Remoto')} · ${esc(j.job_type||'No informado')} · ${j.publication_date?new Date(j.publication_date).toLocaleDateString('es-AR'):'Fecha no informada'}</div><p class="desc">${esc(j.description).slice(0,450)}${clean(j.description).length>450?'…':''}</p><a class="apply" href="${j.url}" target="_blank" rel="noopener noreferrer">Postularse aquí</a><span class="source">Fuente: Remotive</span></article>`).join(''):'<div class="notice">La fuente respondió correctamente, pero no encontró ofertas para esta categoría/filtro.</div>';
-   status.textContent='Última actualización: '+new Date().toLocaleString('es-AR');
+   status.textContent='Ofertas: últimos 30 días · Última actualización: '+new Date().toLocaleString('es-AR');
  }catch(e){
    renderDemo();
    status.textContent='La fuente externa no respondió. La interfaz sigue funcionando en modo local. Para cobertura estable usá el backend PHP.';

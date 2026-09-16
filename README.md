@@ -8,3 +8,6 @@ Importante: al abrir index.html directamente con file://, el navegador puede blo
 Por eso esta versión muestra una vista local funcional y sólo intenta ofertas reales cuando está publicada por HTTP/HTTPS.
 
 Para búsquedas reales más estables y múltiples proveedores, usar la versión PHP/XAMPP con backend.
+
+## Vigencia
+La app sólo muestra ofertas con fecha de publicación dentro de los últimos 30 días y las ordena de más reciente a más antigua.
