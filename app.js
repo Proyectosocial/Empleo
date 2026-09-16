@@ -126,4 +126,31 @@ freeSearch.addEventListener('keydown',e=>{if(e.key==='Enter')load()});
 document.getElementById('refresh').addEventListener('click',load);
 cat.addEventListener('change',load);
 
+
+const sourceDefs=[
+ ['ZonaJobs','https://www.google.com/search?q=site%3Azonajobs.com.ar+'],
+ ['Bumeran','https://www.google.com/search?q=site%3Abumeran.com.ar+'],
+ ['Computrabajo','https://www.google.com/search?q=site%3Aar.computrabajo.com+'],
+ ['Indeed','https://ar.indeed.com/jobs?q='],
+ ['Randstad','https://www.randstad.com.ar/trabajos/q-'],
+ ['LinkedIn','https://www.linkedin.com/jobs/search/?keywords=']
+];
+function currentQuery(){
+ const q=(freeSearch.value.trim()||cat.value).trim();
+ const l=where.value.trim();
+ return l ? q+' '+l : q;
+}
+function renderSourceButtons(){
+ const box=document.getElementById('sourceButtons'); if(!box)return;
+ box.innerHTML=sourceDefs.map(([name,base])=>`<button class="source-btn" data-name="${name}">${name}</button>`).join('');
+ box.querySelectorAll('.source-btn').forEach(btn=>btn.addEventListener('click',()=>{
+   const [name,base]=sourceDefs.find(x=>x[0]===btn.dataset.name);
+   const q=encodeURIComponent(currentQuery());
+   let url=base+q;
+   if(name==='Randstad') url='https://www.google.com/search?q='+encodeURIComponent('site:randstad.com.ar/trabajos '+currentQuery());
+   window.open(url,'_blank','noopener,noreferrer');
+ }));
+}
+renderSourceButtons();
+
 load();

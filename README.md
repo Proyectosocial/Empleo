@@ -28,3 +28,8 @@ La búsqueda muestra por defecto únicamente ofertas publicadas durante los últ
 
 ## Búsqueda libre
 Se añadió un campo vacío y no precargado. Si el usuario escribe un puesto u oficio, esa búsqueda tiene prioridad sobre la categoría seleccionada. Puede ejecutar con Buscar o Enter.
+
+## Búsqueda multifuente
+Se añadieron accesos de búsqueda para ZonaJobs, Bumeran, Computrabajo, Indeed, Randstad y LinkedIn.
+Los botones usan el texto de Búsqueda libre o, si está vacío, la categoría seleccionada; también incorporan la localidad elegida.
+Por las restricciones de CORS, autenticación y condiciones técnicas de cada portal, la versión estática de GitHub Pages no extrae ni copia automáticamente sus avisos: abre la búsqueda correspondiente para consultar y postularse en la fuente original.

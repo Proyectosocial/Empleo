@@ -17,3 +17,8 @@ select,input{min-width:220px}button{background:#2563eb;color:#fff;border:0;font-
 .detail-btn{display:inline-block;background:#2563eb;color:white;border:0;padding:10px 14px;border-radius:9px;font-weight:bold;margin-top:4px}
 
 .free-search{flex:1;min-width:260px}.free-search input{width:100%;min-width:260px}
+
+.sources{background:#fff;border:1px solid #e4e7ec;border-radius:14px;padding:16px;margin:12px 0}
+.sources-title{font-weight:800;margin-bottom:10px}.source-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.source-btn{background:#fff;color:#2563eb;border:1px solid #bfdbfe;padding:9px 12px}.source-btn:hover{background:#eff6ff}
+.sources small{color:#667085}
