@@ -25,3 +25,6 @@ El desplegable de búsqueda incluye 25 categorías, desde Personal de Maestranza
 
 ## Vigencia predeterminada
 La búsqueda muestra por defecto únicamente ofertas publicadas durante los últimos 15 días, ordenadas desde la más reciente.
+
+## Búsqueda libre
+Se añadió un campo vacío y no precargado. Si el usuario escribe un puesto u oficio, esa búsqueda tiene prioridad sobre la categoría seleccionada. Puede ejecutar con Buscar o Enter.

@@ -6,7 +6,7 @@ const categories=[
 'Abogado / Asesor Legal','Generalista de RRHH','DevOps Engineer','Ejecutivo de Cuentas',
 'Key Account Manager','Coordinador de Logística','Controller Financiero','Supervisor de Soporte'
 ];
-const cat=document.getElementById('cat'), jobs=document.getElementById('jobs'), status=document.getElementById('status'), where=document.getElementById('where'), zone=document.getElementById('zone');
+const cat=document.getElementById('cat'), jobs=document.getElementById('jobs'), status=document.getElementById('status'), where=document.getElementById('where'), zone=document.getElementById('zone'), freeSearch=document.getElementById('freeSearch');
 categories.forEach(x=>cat.add(new Option(x,x)));
 
 const locations={
@@ -96,9 +96,12 @@ async function load(){
    const r=await fetch('https://remotive.com/api/remote-jobs',{signal:controller.signal});
    clearTimeout(timer); if(!r.ok) throw new Error('HTTP '+r.status);
    const d=await r.json(); const cutoff=Date.now()-15*24*60*60*1000;
+   const free=freeSearch.value.trim().toLowerCase();
    let list=(d.jobs||[]).filter(j=>{
      const published=Date.parse(j.publication_date||'');
-     return j.company_name&&j.url&&relevant(j,cat.value)&&Number.isFinite(published)&&published>=cutoff&&published<=Date.now();
+     const haystack=(j.title+' '+clean(j.description)+' '+(j.company_name||'')).toLowerCase();
+     const matches=free ? free.split(/\s+/).every(term=>haystack.includes(term)) : relevant(j,cat.value);
+     return j.company_name&&j.url&&matches&&Number.isFinite(published)&&published>=cutoff&&published<=Date.now();
    }).sort((a,b)=>Date.parse(b.publication_date)-Date.parse(a.publication_date));
    const loc=where.value.trim().toLowerCase();
    if(loc) {
@@ -119,6 +122,7 @@ async function load(){
  }
 }
 document.getElementById('go').addEventListener('click',load);
+freeSearch.addEventListener('keydown',e=>{if(e.key==='Enter')load()});
 document.getElementById('refresh').addEventListener('click',load);
 cat.addEventListener('change',load);
 
