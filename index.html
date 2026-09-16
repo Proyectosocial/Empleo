@@ -9,10 +9,29 @@
 <main class="wrap">
 <section class="controls">
 <label>Categoría<select id="cat"></select></label>
-<label>Ubicación<input id="where" placeholder="Ej. Buenos Aires"></label>
+<label>Zona
+<select id="zone">
+<option value="">Todas las zonas</option>
+<option value="caba">Ciudad de Buenos Aires (CABA)</option>
+<option value="norte">Gran Buenos Aires — Zona Norte</option>
+<option value="oeste">Gran Buenos Aires — Zona Oeste</option>
+<option value="sur">Gran Buenos Aires — Zona Sur</option>
+</select>
+</label>
+<label>Localidad
+<select id="where">
+<option value="">Todas las localidades</option>
+</select>
+</label>
 <button id="go">Buscar</button><button id="refresh" class="secondary">Actualizar</button>
 </section>
 <div id="status"></div><div id="jobs"></div>
 </main>
+<div id="jobModal" class="modal" aria-hidden="true">
+  <div class="modal-card">
+    <button id="closeModal" class="modal-close" aria-label="Cerrar">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 <script src="app.js"></script>
 </body></html>

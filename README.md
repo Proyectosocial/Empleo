@@ -1,4 +1,4 @@
-# Empleo Técnico — 
+# Empleo Técnico — GitHub Pages corregido
 
 1. Subí index.html, app.js y style.css al mismo repositorio.
 2. En GitHub: Settings > Pages > Deploy from a branch > main / root.
@@ -11,3 +11,11 @@ Para búsquedas reales más estables y múltiples proveedores, usar la versión 
 
 ## Vigencia
 La app sólo muestra ofertas con fecha de publicación dentro de los últimos 30 días y las ordena de más reciente a más antigua.
+
+## Filtro geográfico
+Se agregó desplegable de Zona (CABA / Gran Buenos Aires) y un segundo desplegable dinámico de barrios/localidades.
+
+La selección de Gran Buenos Aires ahora está dividida en Zona Norte, Zona Oeste y Zona Sur, cada una con su lista dinámica de localidades.
+
+## Detalle y postulación
+El botón Postularse aquí abre primero el detalle completo recibido de la fuente. Desde allí, Ir a la publicación y postularme abre la URL original de la oferta en una pestaña nueva.
