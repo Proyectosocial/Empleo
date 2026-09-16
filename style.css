@@ -1,1 +1,10 @@
-*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font:15px system-ui,Arial}header{padding:28px max(20px,calc((100% - 1050px)/2));background:linear-gradient(135deg,#172554,#2563eb);color:white}header h1{margin:0}main{max-width:1050px;margin:25px auto;padding:0 20px}.controls{display:flex;gap:10px;flex-wrap:wrap;background:white;padding:16px;border-radius:15px;border:1px solid #e5e7eb}input,select,button{padding:11px 13px;border:1px solid #dbe1ea;border-radius:9px;font:inherit}button{background:#2563eb;color:white;font-weight:700;cursor:pointer}.job{margin-top:14px;background:white;border:1px solid #e5e7eb;border-radius:15px;padding:18px}.job h2{margin:0 0 5px;font-size:20px}.company{font-weight:800}.meta,.desc{color:#667085}.apply{display:inline-block;margin-top:12px;padding:10px 13px;background:#2563eb;color:#fff;border-radius:9px;text-decoration:none;font-weight:800}.source{font-size:12px;margin-left:8px;color:#667085}#status{align-self:center;color:#667085}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,system-ui;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#172554,#2563eb);color:white;padding:28px 18px}.wrap{max-width:1050px;margin:auto}
+h1{margin:0 0 6px}.controls{background:white;margin:22px 0 12px;padding:16px;border-radius:14px;display:flex;gap:12px;align-items:end;flex-wrap:wrap;box-shadow:0 5px 20px #0001}
+label{font-size:12px;font-weight:bold;display:grid;gap:5px}select,input,button{padding:11px 12px;border-radius:9px;border:1px solid #d8deea;font:inherit}
+select,input{min-width:220px}button{background:#2563eb;color:#fff;border:0;font-weight:bold;cursor:pointer}.secondary{background:#475467}
+#status{color:#667085;font-size:13px;margin:10px 2px}.job{background:#fff;border:1px solid #e4e7ec;border-radius:14px;padding:18px;margin:12px 0}
+.job h2{margin:0 0 7px;font-size:20px}.company{font-weight:bold}.meta{color:#667085;margin:8px 0}.desc{line-height:1.5;color:#475467}
+.apply{display:inline-block;background:#2563eb;color:#fff;text-decoration:none;padding:10px 14px;border-radius:9px;font-weight:bold;margin-top:4px}
+.source{margin-left:12px;color:#98a2b3;font-size:12px}.notice{padding:18px;background:#fff;border-radius:14px;border:1px solid #e4e7ec}
+@media(max-width:600px){select,input{min-width:100%;width:100%}label{width:100%}}

@@ -1,8 +1,10 @@
-# Empleo Técnico — GitHub Pages
-Versión estática para GitHub Pages. Consume la API pública de Remotive y descarta avisos sin empresa. Remotive exige atribución/enlace a la oferta original y recomienda no consultar más de unas pocas veces por día; por eso la actualización automática está configurada cada 6 horas.
+# Empleo Técnico — GitHub Pages corregido
 
-## Publicar
-Subí estos archivos a un repositorio, activá Settings > Pages > Deploy from branch y elegí `main / root`.
+1. Subí index.html, app.js y style.css al mismo repositorio.
+2. En GitHub: Settings > Pages > Deploy from a branch > main / root.
+3. Abrí la URL HTTPS de GitHub Pages.
 
-## Limitación
-GitHub Pages no puede ocultar claves privadas. Para Adzuna u otras APIs con credenciales usá la versión PHP/backend.
+Importante: al abrir index.html directamente con file://, el navegador puede bloquear APIs externas.
+Por eso esta versión muestra una vista local funcional y sólo intenta ofertas reales cuando está publicada por HTTP/HTTPS.
+
+Para búsquedas reales más estables y múltiples proveedores, usar la versión PHP/XAMPP con backend.

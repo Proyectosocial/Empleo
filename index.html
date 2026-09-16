@@ -1,1 +1,18 @@
-<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Empleo Técnico</title><link rel='stylesheet' href='style.css'></head><body><header><h1>🔎 Empleo Técnico</h1><p>Ofertas reales · empresa obligatoria · actualización automática</p></header><main><section class='controls'><select id='cat'></select><input id='where' placeholder='Ubicación (ej. Buenos Aires)'><button id='go'>Buscar</button><button id='refresh'>Actualizar ahora</button><span id='status'></span></section><div id='jobs'></div></main><script src='app.js'></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Empleo Técnico</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap"><h1>🔎 Empleo Técnico</h1><p>Buscador interactivo de oportunidades laborales</p></div></header>
+<main class="wrap">
+<section class="controls">
+<label>Categoría<select id="cat"></select></label>
+<label>Ubicación<input id="where" placeholder="Ej. Buenos Aires"></label>
+<button id="go">Buscar</button><button id="refresh" class="secondary">Actualizar</button>
+</section>
+<div id="status"></div><div id="jobs"></div>
+</main>
+<script src="app.js"></script>
+</body></html>
