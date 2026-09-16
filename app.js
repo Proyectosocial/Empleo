@@ -1,4 +1,11 @@
-const categories=['Técnico en mantenimiento','Vendedor','Callcenter','Electricista','Técnico mecánico','Técnico instalador','Repositor'];
+const categories=[
+'Personal de Maestranza','Repositor','Vendedor','Atención al Cliente','Facturista',
+'Redactor / Content Creator','Diseñador UX/UI','Desarrollador Web','Data Analyst',
+'Recruiter','Representante de Ventas','Técnico','Recaudador','Especialista SEO/SEM',
+'Especialista en Ciberseguridad','Analista Contable','Analista de Procesos',
+'Abogado / Asesor Legal','Generalista de RRHH','DevOps Engineer','Ejecutivo de Cuentas',
+'Key Account Manager','Coordinador de Logística','Controller Financiero','Supervisor de Soporte'
+];
 const cat=document.getElementById('cat'), jobs=document.getElementById('jobs'), status=document.getElementById('status'), where=document.getElementById('where'), zone=document.getElementById('zone');
 categories.forEach(x=>cat.add(new Option(x,x)));
 
@@ -17,26 +24,41 @@ zone.addEventListener('change',()=>{fillLocations();load()});
 where.addEventListener('change',load);
 
 
-const demo={
-'Técnico en mantenimiento':[['Técnico de mantenimiento industrial','Empresa demostración','Buenos Aires','Mantenimiento preventivo, diagnóstico de fallas y herramientas manuales.']],
-'Vendedor':[['Vendedor técnico','Empresa demostración','Buenos Aires','Atención comercial, seguimiento de clientes y presupuestos.']],
-'Callcenter':[['Operador de atención','Empresa demostración','Buenos Aires','Atención telefónica, registro de gestiones y seguimiento.']],
-'Electricista':[['Electricista de mantenimiento','Empresa demostración','Buenos Aires','Tableros, instalaciones y diagnóstico eléctrico.']],
-'Técnico mecánico':[['Técnico mecánico','Empresa demostración','Buenos Aires','Mantenimiento mecánico y uso de instrumentos de medición.']],
-'Técnico instalador':[['Técnico instalador','Empresa demostración','Buenos Aires','Instalaciones, configuración y visitas técnicas.']],
-'Repositor':[['Repositor','Empresa demostración','Buenos Aires','Reposición, stock y control de mercadería.']]
-};
+const demo={};
+categories.forEach(c=>demo[c]=[[c+' — puesto de demostración','Empresa demostración','Buenos Aires','Vista local para comprobar la interfaz. Las ofertas reales se consultan al publicar el sitio por HTTPS.']]);
 function clean(s=''){const d=document.createElement('div');d.innerHTML=String(s);return (d.textContent||'').replace(/\s+/g,' ').trim()}
 function esc(s=''){return clean(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function relevant(j,q){const t=(j.title+' '+clean(j.description)).toLowerCase(); const keys={
-'Técnico en mantenimiento':['maintenance','technician','mantenimiento'],
-'Vendedor':['sales','account','vendedor'],
-'Callcenter':['customer support','customer service','call center','support'],
-'Electricista':['electrician','electrical','electricista'],
-'Técnico mecánico':['mechanic','mechanical','mecánico'],
-'Técnico instalador':['installer','installation','field technician','instalador'],
-'Repositor':['stock','warehouse','inventory','repositor']
-}; return (keys[q]||[]).some(k=>t.includes(k))}
+function relevant(j,q){
+ const t=(j.title+' '+clean(j.description)).toLowerCase();
+ const keys={
+ 'Personal de Maestranza':['cleaner','cleaning','housekeeping','janitor','maestranza','limpieza'],
+ 'Repositor':['stock','warehouse','inventory','repositor','merchandiser'],
+ 'Vendedor':['sales','seller','vendedor','retail sales'],
+ 'Atención al Cliente':['customer service','customer support','atención al cliente','client support'],
+ 'Facturista':['billing','invoicing','facturación','facturista'],
+ 'Redactor / Content Creator':['content writer','copywriter','content creator','writer','redactor'],
+ 'Diseñador UX/UI':['ux','ui designer','product designer','user experience'],
+ 'Desarrollador Web':['web developer','frontend','front-end','backend','back-end','full stack','fullstack'],
+ 'Data Analyst':['data analyst','business intelligence','bi analyst','analytics'],
+ 'Recruiter':['recruiter','talent acquisition','recruitment'],
+ 'Representante de Ventas':['sales representative','sales rep','business development representative','bdr'],
+ 'Técnico':['technician','technical','técnico','maintenance'],
+ 'Recaudador':['collector','collections','collection agent','recaudador','cobranzas'],
+ 'Especialista SEO/SEM':['seo','sem','search engine marketing','paid search','ppc'],
+ 'Especialista en Ciberseguridad':['cybersecurity','cyber security','security analyst','information security','soc analyst'],
+ 'Analista Contable':['accounting analyst','accountant','contable','accounting'],
+ 'Analista de Procesos':['process analyst','business process','process improvement','analista de procesos'],
+ 'Abogado / Asesor Legal':['lawyer','legal counsel','attorney','legal advisor','abogado'],
+ 'Generalista de RRHH':['hr generalist','human resources generalist','people operations','rrhh'],
+ 'DevOps Engineer':['devops','site reliability','sre','cloud engineer'],
+ 'Ejecutivo de Cuentas':['account executive','ejecutivo de cuentas'],
+ 'Key Account Manager':['key account manager','kam','strategic account'],
+ 'Coordinador de Logística':['logistics coordinator','supply chain coordinator','coordinador de logística'],
+ 'Controller Financiero':['financial controller','finance controller','controller financiero'],
+ 'Supervisor de Soporte':['support supervisor','support team lead','customer support lead','technical support supervisor']
+ };
+ return (keys[q]||[q.toLowerCase()]).some(k=>t.includes(k));
+}
 function renderDemo(){
  const d=demo[cat.value]||[]; const loc=where.value.trim().toLowerCase();
  const list=d.filter(x=>!loc||x[2].toLowerCase().includes(loc));

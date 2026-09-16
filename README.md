@@ -19,3 +19,6 @@ La selección de Gran Buenos Aires ahora está dividida en Zona Norte, Zona Oest
 
 ## Detalle y postulación
 El botón Postularse aquí abre primero el detalle completo recibido de la fuente. Desde allí, Ir a la publicación y postularme abre la URL original de la oferta en una pestaña nueva.
+
+## Categorías
+El desplegable de búsqueda incluye 25 categorías, desde Personal de Maestranza hasta Supervisor de Soporte, con términos de búsqueda equivalentes en español/inglés para la fuente de empleos.
