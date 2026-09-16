@@ -1,4 +1,4 @@
-# Empleo Técnico — GitHub Pages corregido
+# Empleo --
 
 1. Subí index.html, app.js y style.css al mismo repositorio.
 2. En GitHub: Settings > Pages > Deploy from a branch > main / root.
